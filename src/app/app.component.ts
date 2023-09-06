@@ -29,4 +29,5 @@ export class AppComponent {
     })
     console.log("login");
   }
+  userRoles: string[] = this.securityService.kcService.getUserRoles(true);
 }

@@ -9,18 +9,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { createCustomElement } from '@angular/elements';
 
 export function kcFactory(kcService: KeycloakService){
-  return () => kcService.init({
-    config: {
-      url: 'http://localhost:8080',
-      realm: 'test-realm',
-      clientId: 'test-client'
-    },
-    initOptions: {
-      onLoad: 'check-sso',
-      checkLoginIframe: true
-    },
-  }
-  );
+    return () => kcService.init({
+      config: {
+        url: 'http://localhost:8080',
+        realm: 'test-realm',
+        clientId: 'test-client'
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        checkLoginIframe: true
+      },
+    }
+    );
 }
 @NgModule({
   declarations: [
@@ -42,12 +42,17 @@ export function kcFactory(kcService: KeycloakService){
       multi: true 
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent],
+  //entryComponents: [AppComponent, UserComponent]
 })
 export class AppModule { 
   constructor(private injctor: Injector){
-    const userElement = createCustomElement(UserComponent, {injector: this.injctor});
-    customElements.define('app-user', userElement);
+    
   }
-  ngDoBootstrap(){}
+  ngDoBootstrap(){
+    const userElement = createCustomElement(UserComponent, {injector: this.injctor});
+    const appElement = createCustomElement(AppComponent, {injector: this.injctor});
+    customElements.define('app-mfe-user', userElement);
+    customElements.define('app-mfe', appElement);
+  }
 }

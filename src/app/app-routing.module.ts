@@ -4,7 +4,7 @@ import { AuthGuard } from './guard/security-guard';
 import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  { path: 'user', component: UserComponent , canActivate: [AuthGuard], data: { roles: ['USER']}},
+  { path: 'user', component: UserComponent , canActivate: [AuthGuard], data: { roles: ['USER']} },
 ];
 
 @NgModule({

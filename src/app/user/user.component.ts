@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     // Listen for postMessage events from AngullarApp
-    window.addEventListener('message', (event) => {
+    /*window.addEventListener('message', (event) => {
       if (event.origin === 'http://localhost:4200' && event.data.type === 'auth_token') {
         const token = event.data.token;
 
@@ -45,10 +45,12 @@ export class UserComponent implements OnInit {
             }
           });
       }
-    });
+    });*/
 
     this.backendService.getMicroserviceUser().subscribe(data => {
       this.userData = data;
     });
   }
+
+  userRoles: string[] = this.securityService.kcService.getUserRoles(true);
 }

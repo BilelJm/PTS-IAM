@@ -3,9 +3,8 @@ const concat = require('concat');
   const files = [
     './dist/user-app/runtime.js',
     './dist/user-app/polyfills.js',
-    './dist/user-app/main.js',
-    './dist/user-app/scripts.js'
+    './dist/user-app/main.js'
   ];
-  await concat(files, './dist/user-app/user-app.js');
+  await concat(files, './dist/user-app/mfe-app.js');
 }
 )();
